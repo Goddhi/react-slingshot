@@ -1,0 +1,35 @@
+version: 2.1
+jobs:
+  build: # build job
+    docker: 
+      - image: circleci/node:13.8.0
+    steps: ## commands/instrcutions to build the test job
+      - checkout
+      - run: npm i 
+      - run: npm run lint
+
+  test: # test job
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run: npm i
+      - run: npm run test
+    
+  analyze: # analyze job
+    docker: 
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run: npm audit
+
+workflow:  # workflow job
+  my_workflow:
+    jobs: # This my_workflow job means the analyze job requires test job to run likewise the test job require the build job to run first.
+      - build
+      - test:
+          requires:
+            - build
+      - analyze:
+          requires:
+            - test
