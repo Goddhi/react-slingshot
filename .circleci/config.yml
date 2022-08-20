@@ -28,7 +28,7 @@ jobs:
 
 workflow:
   default: ## workflow name
-    jobs:
+    job:
       - build-job          
       
 
