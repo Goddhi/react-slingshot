@@ -38,18 +38,6 @@ jobs:
           key: "dependencies-cache"
       - run: npm audit --fix
 
-
-
-
-
-  
-        
-
-
-
-
-
-
 workflows:
   default: ## workflow name
     jobs:
@@ -57,7 +45,7 @@ workflows:
       - test-job:
           requires: [build-job]
       - analyze-job:
-          requires: [tets-job]
+          requires: [test-job]
       
 
 # version: 2.1
