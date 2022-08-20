@@ -27,7 +27,19 @@ jobs:
       - checkout
       - restore_cache:
           key: "dependencies-cache"
+      - run: npm i
       - run: npm run test
+
+  analyze-job:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: "dependencies-cache"
+      - run: npm audit --fix
+
+
+
 
 
   
@@ -44,6 +56,8 @@ workflows:
       - build-job     
       - test-job:
           requires: [build-job]
+      - analyze-job:
+          requires: [tets-job]
       
 
 # version: 2.1
