@@ -13,9 +13,9 @@ jobs:
       - run: 
           name: run build
           command: npm i
-      - save_cache:
-          key: dependencies-cache
-          paths: /src/node-modules
+      # - save_cache:
+      #     key: dependencies-cache
+      #     paths: /src/node_modules
       - run:
           name: run lint  
           command: npm run list
