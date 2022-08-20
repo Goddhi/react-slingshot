@@ -36,7 +36,11 @@ jobs:
       - checkout
       - restore_cache:
           key: "dependencies-cache"
-      - run: npm audit --fix
+      - run:
+          name: fix code dependencies
+          command: |
+            npm audit fix --audit-level=critical --force            
+            npm audit --audit-level=critical
 
 workflows:
   default: ## workflow name
