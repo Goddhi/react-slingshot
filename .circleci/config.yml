@@ -56,7 +56,7 @@ jobs:
       - checkout
       - run: npm audit
 
-workflow:  # workflow job
+workflows:  # workflow job
   my_workflow:
     jobs: # This my_workflow job means the analyze job requires test job to run likewise the test job require the build job to run first.
       - build
