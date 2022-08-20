@@ -13,7 +13,7 @@ jobs:
       - run: 
           name: run build
           command: npm i
-      - save-cache:
+      - save_cache:
           key: dependencies-cache
           paths: /src/node-modules
       - run:
