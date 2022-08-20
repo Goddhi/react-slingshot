@@ -26,9 +26,9 @@ jobs:
 
 
 
-workflow:
+workflows:
   default: ## workflow name
-    job:
+    jobs:
       - build-job          
       
 
@@ -66,4 +66,4 @@ workflow:
 #             - build
 #       - analyze:
 #           requires:
-            - test      
+            # - test      
