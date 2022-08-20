@@ -15,11 +15,23 @@ jobs:
           name: run build
           command: npm i
       - save_cache:
-          key: dependencies-cache
+          key: "dependencies-cache"
           paths: /src/node_modules
       - run:
           name: run lint  
-          command: npm run list
+          command: npm run lint
+
+  test-job:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: "dependencies-cache"
+      - run: npm run test
+
+
+  
+        
 
 
 
@@ -29,7 +41,9 @@ jobs:
 workflows:
   default: ## workflow name
     jobs:
-      - build-job          
+      - build-job     
+      - test-job:
+          requires: [build-job]
       
 
 # version: 2.1
